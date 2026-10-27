@@ -98,9 +98,7 @@
         }
         
         /* Ensure inner text takes the selected color */
-        .strength-chip.selected * {
-            color: inherit !important;
-        }
+        .strength-chip.selected * { color: inherit !important; }
 
         .insight-box {
             background: linear-gradient(145deg, rgba(179,142,68,0.1) 0%, rgba(179,142,68,0.05) 100%);
@@ -117,25 +115,30 @@
 
     <!-- Header -->
     <header class="w-full max-w-5xl flex justify-between items-center mb-8">
-        <h1 class="text-2xl font-bold text-white tracking-tight" data-i18n="title">STRENGTH <span class="text-brand-gold">×</span> STRENGTH</h1>
+        <div class="flex items-center gap-4">
+            <img src="C:\Users\Safal\OneDrive\Desktop\Strengths\Gemini_Generated_Image_i5v2k5i5v2k5i5v2.png" alt="Logo" class="w-12 h-12 drop-shadow-md object-contain transition-transform hover:scale-105">
+            <h1 class="text-2xl font-bold text-white tracking-tight" data-i18n="title">STRENGTH <span class="text-brand-gold">×</span> STRENGTH</h1>
+        </div>
         <div class="flex gap-2">
-            <button onclick="toggleTheme()" class="p-2 border border-gray-600 text-gray-400 rounded-full hover:text-white transition-colors" title="Toggle Light/Dark Mode">
-                🌓
-            </button>
-            <button onclick="toggleLang()" class="text-sm font-bold border border-gray-600 text-gray-400 px-3 py-2 rounded-full hover:text-white transition-colors" id="lang-btn">
-                عربي
-            </button>
-            <button onclick="toggleStepModal()" class="text-sm border border-brand-gold text-brand-gold px-4 py-2 rounded-full hover:bg-brand-gold hover:text-white transition-colors" data-i18n="what_is_step">
-                What is STEP?
-            </button>
+            <button onclick="toggleTheme()" class="p-2 border border-gray-600 text-gray-400 rounded-full hover:text-white transition-colors" title="Toggle Light/Dark Mode">🌓</button>
+            <button onclick="toggleLang()" class="text-sm font-bold border border-gray-600 text-gray-400 px-3 py-2 rounded-full hover:text-white transition-colors" id="lang-btn">عربي</button>
+            <button onclick="toggleStepModal()" class="text-sm border border-brand-gold text-brand-gold px-4 py-2 rounded-full hover:bg-brand-gold hover:text-white transition-colors" data-i18n="what_is_step">What is STEP?</button>
         </div>
     </header>
 
     <!-- Main Container -->
     <main class="w-full max-w-5xl bg-brand-bg rounded-2xl shadow-2xl p-6 md:p-10 flex flex-col items-center min-h-[70vh]">
         
+        <!-- 0. View: Splash Screen -->
+        <div id="view-splash" class="w-full fade-in flex flex-col items-center justify-center min-h-[60vh]">
+            <img src="C:\Users\Safal\OneDrive\Desktop\Strengths\Gemini_Generated_Image_io6if0io6if0io6i.png" alt="Strength x Strength Logo" class="w-64 md:w-96 rounded-2xl shadow-2xl mb-8 border-2 border-brand-gold/50 object-cover">
+            <h2 class="text-4xl font-bold text-white mb-4 tracking-tight text-center" data-i18n="splash_welcome">Welcome to the Experience</h2>
+            <p class="text-gray-300 max-w-xl mx-auto mb-10 text-lg text-center" data-i18n="splash_desc">A guided framework to explore the unique dynamics, tensions, and synergies of your top strengths.</p>
+            <button onclick="enterPlatform()" class="px-12 py-4 bg-brand-gold text-brand-bg font-bold rounded-full hover:bg-yellow-600 transition-all text-xl shadow-lg hover:scale-105 transform" data-i18n="enter_platform">Enter Platform</button>
+        </div>
+
         <!-- 1. View: Onboarding (Top 5 Selection) -->
-        <div id="view-onboarding" class="w-full fade-in block">
+        <div id="view-onboarding" class="w-full fade-in hidden">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-white mb-3" data-i18n="discover">Discover Your Dynamic</h2>
                 <p class="text-gray-300" data-i18n="discover_desc">Select your Top 5 strengths to begin. Notice how they are grouped by their natural domains.</p>
@@ -197,10 +200,10 @@
                 <h2 class="text-3xl font-bold text-white act-pair-title"></h2>
             </div>
             
-            <!-- Dynamic Content Injected Here -->
+            <!-- Dynamic Content -->
             <div id="act-dynamic-content" class="mb-8"></div>
 
-            <!-- Learning Feedback Insight Box (Hidden by default, shown on interaction) -->
+            <!-- Learning Feedback Insight Box -->
             <div id="act-insight-box" class="hidden insight-box p-5 rounded-r-lg mb-8">
                 <h4 class="font-bold text-brand-gold text-sm uppercase tracking-wider mb-1 flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4z"></path></svg>
@@ -225,21 +228,21 @@
         <!-- Final Summary View -->
         <div id="view-summary" class="w-full hidden fade-in max-w-4xl">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-brand-gold mb-2">Your Dynamic Report</h2>
+                <h2 class="text-3xl font-bold text-brand-gold mb-2" data-i18n="report_title">Your Dynamic Report</h2>
                 <p class="text-gray-300 text-xl act-pair-title"></p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-6 mb-8">
                 <div class="bg-brand-card p-6 rounded-xl border-t-4 border-t-brand-gold shadow-lg">
                     <h3 class="font-bold text-white text-lg mb-4 flex items-center gap-2">
-                        <span class="bg-brand-gold text-brand-bg w-6 h-6 rounded-full flex items-center justify-center text-xs">S</span> Bright Side
+                        <span class="bg-brand-gold text-brand-bg w-6 h-6 rounded-full flex items-center justify-center text-xs">S</span> <span data-i18n="sum_s_title">Bright Side</span>
                     </h3>
                     <div class="text-gray-300 text-sm space-y-3" id="sum-s"></div>
                 </div>
                 
                 <div class="bg-brand-card p-6 rounded-xl border-t-4 border-t-gray-500 shadow-lg">
                     <h3 class="font-bold text-white text-lg mb-4 flex items-center gap-2">
-                        <span class="bg-gray-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">T</span> Tension Points
+                        <span class="bg-gray-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">T</span> <span data-i18n="sum_t_title">Tension Points</span>
                     </h3>
                     <div class="text-gray-300 text-sm space-y-3" id="sum-t"></div>
                 </div>
@@ -247,23 +250,22 @@
 
             <div class="bg-brand-card p-6 rounded-xl border-t-4 border-t-blue-500 shadow-lg mb-6">
                 <h3 class="font-bold text-white text-lg mb-4 flex items-center gap-2">
-                    <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">P</span> Perspectives
+                    <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">P</span> <span data-i18n="sum_p_title">Perspectives</span>
                 </h3>
                 <div class="grid md:grid-cols-3 gap-4" id="sum-p"></div>
             </div>
 
             <div class="bg-brand-card p-6 rounded-xl border-t-4 border-t-green-500 shadow-lg mb-8">
                 <h3 class="font-bold text-white text-lg mb-4 flex items-center gap-2">
-                    <span class="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">E</span> Action Experience
+                    <span class="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">E</span> <span data-i18n="sum_e_title">Action Experience</span>
                 </h3>
                 <div class="space-y-4" id="sum-e"></div>
             </div>
 
             <div class="flex justify-center">
-                <button onclick="showView('view-dashboard')" class="px-8 py-3 bg-gray-600 text-white font-bold rounded-xl hover:bg-gray-500 transition-colors">Return to Dashboard</button>
+                <button onclick="showView('view-dashboard')" class="px-8 py-3 bg-gray-600 text-white font-bold rounded-xl hover:bg-gray-500 transition-colors" data-i18n="ret_dash">Return to Dashboard</button>
             </div>
         </div>
-
     </main>
 
     <!-- STEP Framework Modal -->
@@ -277,36 +279,33 @@
             
             <div class="space-y-6">
                 <div class="flex gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-gold text-brand-bg flex items-center justify-center font-bold text-lg shadow-lg">S</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-gold text-brand-bg flex items-center justify-center font-bold text-lg shadow-lg flex-shrink-0">S</div>
                     <div><h4 class="text-white font-bold text-lg">Strength in Action</h4><p class="text-sm text-gray-400">Discovering the unique superpower created when these two strengths are aligned and working well together.</p></div>
                 </div>
                 <div class="flex gap-4">
-                    <div class="w-10 h-10 rounded-full bg-[#3A4B55] text-white border border-gray-500 flex items-center justify-center font-bold text-lg">T</div>
+                    <div class="w-10 h-10 rounded-full bg-[#3A4B55] text-white border border-gray-500 flex items-center justify-center font-bold text-lg flex-shrink-0">T</div>
                     <div><h4 class="text-white font-bold text-lg">Tension</h4><p class="text-sm text-gray-400">Identifying the friction. When do these strengths compete for your attention or cause internal conflict?</p></div>
                 </div>
                 <div class="flex gap-4">
-                    <div class="w-10 h-10 rounded-full bg-[#3A4B55] text-white border border-gray-500 flex items-center justify-center font-bold text-lg">E</div>
+                    <div class="w-10 h-10 rounded-full bg-[#3A4B55] text-white border border-gray-500 flex items-center justify-center font-bold text-lg flex-shrink-0">E</div>
                     <div><h4 class="text-white font-bold text-lg">Experience</h4><p class="text-sm text-gray-400">Applying this knowledge to real-world scenarios: your work, your relationships, and your daily life.</p></div>
                 </div>
                 <div class="flex gap-4">
-                    <div class="w-10 h-10 rounded-full bg-[#3A4B55] text-white border border-gray-500 flex items-center justify-center font-bold text-lg">P</div>
+                    <div class="w-10 h-10 rounded-full bg-[#3A4B55] text-white border border-gray-500 flex items-center justify-center font-bold text-lg flex-shrink-0">P</div>
                     <div><h4 class="text-white font-bold text-lg">Perspective</h4><p class="text-sm text-gray-400">Shifting lenses. Looking at a single challenge through the eyes of Strength A, then Strength B, and finally both.</p></div>
                 </div>
             </div>
         </div>
     </div>
 
-    </main>
-
-    <!-- Footer: Rights Reserved -->
-    <footer class="w-full text-center py-6 mt-auto text-sm text-gray-500 dark:text-gray-400 font-medium fade-in">
+    <!-- Footer -->
+    <footer class="w-full text-center py-6 mt-auto text-sm text-gray-500 font-medium fade-in">
         &copy; 2026 Safa Lamhboub. All rights reserved.
     </footer>
 
     <script>
         // --- 1. Data: The 34 Strengths ---
         const allStrengths = [
-            // Executing
             { name: "Achiever", domain: "executing", brief: "Stamina and drive to work hard and complete tasks.", dark: "Can burn out by ignoring rest; might value doing over being." },
             { name: "Arranger", domain: "executing", brief: "Organizing variables for maximum productivity.", dark: "Can confuse others by constantly changing plans to optimize." },
             { name: "Belief", domain: "executing", brief: "Core values that guide purpose and meaning.", dark: "May become stubborn or overly rigid when values are challenged." },
@@ -316,7 +315,7 @@
             { name: "Focus", domain: "executing", brief: "Intense goal-orientation requiring clear direction.", dark: "Can get tunnel vision and miss peripheral opportunities." },
             { name: "Responsibility", domain: "executing", brief: "Psychological ownership of commitments.", dark: "Can take on too much and feel burdened by others' failures." },
             { name: "Restorative", domain: "executing", brief: "Adept at identifying problems and fixing them.", dark: "Might focus too much on what's broken rather than what's working." },
-            // Influencing
+            
             { name: "Activator", domain: "influencing", brief: "Turning thoughts into immediate action.", dark: "Can act before thinking, causing unnecessary mistakes." },
             { name: "Command", domain: "influencing", brief: "Taking control and making decisive choices.", dark: "Can seem bossy, intimidating, or dismissive of consensus." },
             { name: "Communication", domain: "influencing", brief: "Putting thoughts into compelling, engaging words.", dark: "Might dominate conversations or prioritize talk over listening." },
@@ -325,7 +324,7 @@
             { name: "Self-Assurance", domain: "influencing", brief: "Inner compass giving deep confidence in decisions.", dark: "Can appear arrogant or unwilling to take advice." },
             { name: "Significance", domain: "influencing", brief: "Desire to be recognized, important, and make an impact.", dark: "May crave validation to the point of people-pleasing." },
             { name: "Woo", domain: "influencing", brief: "Winning others over; loving the challenge of meeting strangers.", dark: "Might focus on breadth of connections rather than depth." },
-            // Relationship
+            
             { name: "Adaptability", domain: "relationship", brief: "Living in the moment and flowing with change.", dark: "Can seem directionless or easily distracted from long-term goals." },
             { name: "Connectedness", domain: "relationship", brief: "Seeing the links between all things; seeking unity.", dark: "Might rely too much on fate rather than taking pragmatic action." },
             { name: "Developer", domain: "relationship", brief: "Recognizing and cultivating the potential in others.", dark: "Can invest too much time in people who aren't ready to grow." },
@@ -335,7 +334,7 @@
             { name: "Individualization", domain: "relationship", brief: "Intrigued by the unique qualities of each specific person.", dark: "May struggle to create standardized processes for groups." },
             { name: "Positivity", domain: "relationship", brief: "Contagious enthusiasm, optimism, and energy.", dark: "Can seem naive or dismissive of serious, negative realities." },
             { name: "Relator", domain: "relationship", brief: "Craving deep, genuine, and intimate relationships.", dark: "Might form cliques or be wary of letting new people in." },
-            // Strategic
+            
             { name: "Analytical", domain: "strategic", brief: "Searching for reasons, causes, and data.", dark: "Can suffer from analysis paralysis or seem overly critical." },
             { name: "Context", domain: "strategic", brief: "Looking back to history to understand the present.", dark: "Might get stuck in the past, resisting new, unproven methods." },
             { name: "Futuristic", domain: "strategic", brief: "Inspired by visions of what could be.", dark: "Can live so much in the future that they neglect present tasks." },
@@ -346,27 +345,24 @@
             { name: "Strategic", domain: "strategic", brief: "Quickly spotting relevant patterns and alternative paths.", dark: "Can jump to the solution too fast, leaving others confused." }
         ];
 
-        // --- 2. Interactive Scenarios & Learning Feedback Data ---
-        // Used in Activity 1 (S)
+        // --- 2. Interactive Scenarios & Feedback ---
         const a1Scenarios = [
             { text: "They act as a 1-2 punch. One sets the goal, the other executes it.", insight: "This is a sequential dynamic. You are using one strength as the visionary and the other as the engine. To maximize this, clarify the hand-off moment between the two." },
             { text: "They blend together simultaneously to handle complex situations.", insight: "This is an integrated dynamic. The synergy makes you highly adaptable, but it can be hard to explain your thought process to others. Practice vocalizing your steps." },
-            { text: "One covers the blind spots of the other perfectly.", insight: "This is a compensatory dynamic. It's an excellent self-management tool. Lean into this when you feel stuck—ask yourself, 'How can my other strength rescue me here?'" }
+            { text: "One covers the blind spots of the other perfectly.", insight: "This is a compensatory dynamic. It's an excellent self-management tool. Lean into this when you feel stuck." }
         ];
 
-        // Used in Activity 2 (T)
         const a2Scenarios = [
             { text: "One wants to move fast, the other wants to slow down and process.", insight: "Speed tension is common. The fix isn't compromising, it's sequencing. Consciously say: 'I will pause to process for 10 minutes, then I will act decisively.'" },
-            { text: "They demand different types of mental or emotional energy.", insight: "Energy tension leads to exhaustion. When you feel drained, you are likely context-switching too fast between these traits. Try time-blocking your day based on energy needs." },
-            { text: "I struggle when the environment demands one, but I want to use the other.", insight: "Environmental tension happens when external demands misalign with natural talents. You must act as an advocate for your strengths and re-frame the task to fit your style." }
+            { text: "They demand different types of mental or emotional energy.", insight: "Energy tension leads to exhaustion. You are likely context-switching too fast between these traits. Try time-blocking your day based on energy needs." },
+            { text: "I struggle when the environment demands one, but I want to use the other.", insight: "Environmental tension happens when external demands misalign with natural talents. You must act as an advocate for your strengths and re-frame the task." }
         ];
 
-        // Used in Activity 3 (P) - Dynamic based on Domain
         const domainPerspectives = {
-            executing: { prompt: "How do you regain control?", choices: [{text: "Create a strict, prioritized task list immediately.", insight: "Executing strengths find peace in order. By externalizing the chaos into a list, you lower anxiety and create a clear path forward."}, {text: "Focus intensely on completing just one immediate milestone.", insight: "Action breeds confidence for Executing traits. Hitting one small target creates momentum for the rest."}] },
-            influencing: { prompt: "How do you rally the group?", choices: [{text: "Take command of the communication to project certainty.", insight: "Influencing strengths thrive when leading the narrative. Your certainty, even if feigned initially, provides a psychological anchor for the team."}, {text: "Challenge the team to step up and turn the crisis into a win.", insight: "Reframing a problem as a competition or challenge sparks the motivational engine of Influencing traits."}] },
-            relationship: { prompt: "How do you support the team?", choices: [{text: "Check in on morale individually before making new plans.", insight: "Relationship strengths know that if the people break, the project breaks. Your instinct to connect protects the foundation."}, {text: "Create a safe space for everyone to voice their concerns.", insight: "Consensus and inclusion are your superpowers. Venting the pressure valve allows the team to refocus faster."}] },
-            strategic: { prompt: "How do you analyze the shift?", choices: [{text: "Step back to map out multiple alternative scenarios.", insight: "Strategic strengths need the 'balcony view'. Detaching emotionally allows you to see the patterns others miss in the chaos."}, {text: "Research the root cause before taking any new action.", insight: "Information lowers risk. Your instinct to pause and analyze prevents the team from running fast in the wrong direction."}] }
+            executing: { prompt: "How do you regain control?", choices: [{text: "Create a strict, prioritized task list immediately.", insight: "Executing strengths find peace in order. By externalizing the chaos into a list, you lower anxiety."}, {text: "Focus intensely on completing just one immediate milestone.", insight: "Action breeds confidence for Executing traits. Hitting one small target creates momentum."}] },
+            influencing: { prompt: "How do you rally the group?", choices: [{text: "Take command of the communication to project certainty.", insight: "Influencing strengths thrive when leading the narrative. Your certainty provides a psychological anchor."}, {text: "Challenge the team to step up and turn the crisis into a win.", insight: "Reframing a problem as a competition sparks the motivational engine of Influencing traits."}] },
+            relationship: { prompt: "How do you support the team?", choices: [{text: "Check in on morale individually before making new plans.", insight: "Relationship strengths know that if the people break, the project breaks. Your instinct protects the foundation."}, {text: "Create a safe space for everyone to voice their concerns.", insight: "Consensus and inclusion are your superpowers. Venting the pressure valve allows the team to refocus faster."}] },
+            strategic: { prompt: "How do you analyze the shift?", choices: [{text: "Step back to map out multiple alternative scenarios.", insight: "Strategic strengths need the 'balcony view'. Detaching emotionally allows you to see the patterns others miss."}, {text: "Research the root cause before taking any new action.", insight: "Information lowers risk. Your instinct to pause and analyze prevents running fast in the wrong direction."}] }
         };
         
         const integrationPerspectives = {
@@ -378,7 +374,6 @@
             ]
         };
 
-        // Used in Activity 4 (E)
         const a4Tabs = [
             { id: 'work', label: 'Work', scenario: "A high-stakes project hits a major roadblock.", options: [{text: "I will lean on this pair to independently solve the bottleneck.", insight: "Autonomy is powerful, but ensure you communicate your progress to stakeholders."}, {text: "I will use this pair to facilitate a team breakthrough.", insight: "Translating your internal dynamic into group leadership is a sign of mature strength usage."}] },
             { id: 'rel', label: 'Relationships', scenario: "A recurring misunderstanding with a colleague or partner.", options: [{text: "I will use my first strength to listen, and the second to respond.", insight: "Sequencing your strengths in communication prevents emotional reactivity."}, {text: "I will explain how these two strengths influence my perspective.", insight: "Vulnerability builds trust. Owning your dynamic helps others understand your 'why'."}] },
@@ -399,9 +394,14 @@
             progress: { act1: false, act2: false, act3: false, act4: false }
         };
 
-        // --- 4. Core UI & Navigation Logic ---
+        // --- 4. Core UI & Navigation ---
         function init() {
             renderStrengthsGrid();
+            showView('view-splash');
+        }
+
+        window.enterPlatform = function() {
+            showView('view-onboarding');
         }
 
         window.toggleStepModal = function() {
@@ -416,16 +416,23 @@
         }
 
         window.showView = function(viewId) {
-            ['view-onboarding', 'view-pairing', 'view-dashboard', 'activity-container', 'view-summary'].forEach(id => {
+            ['view-splash', 'view-onboarding', 'view-pairing', 'view-dashboard', 'activity-container', 'view-summary'].forEach(id => {
                 const el = document.getElementById(id);
-                if(el) { el.classList.add('hidden'); el.classList.remove('block'); }
+                if(el) { 
+                    el.classList.add('hidden'); 
+                    el.classList.remove('block', 'flex'); 
+                }
             });
-            document.getElementById(viewId).classList.remove('hidden');
-            document.getElementById(viewId).classList.add('block');
+            const target = document.getElementById(viewId);
+            if(target) {
+                target.classList.remove('hidden');
+                target.classList.add(viewId === 'view-splash' ? 'flex' : 'block');
+            }
             window.scrollTo(0, 0);
         }
 
         function updatePairTitles() {
+            if(appState.selectedPair.length < 2) return;
             const title = `${appState.selectedPair[0]} × ${appState.selectedPair[1]}`;
             document.querySelectorAll('.act-pair-title').forEach(el => el.textContent = title);
         }
@@ -433,6 +440,7 @@
         // --- 5. Selection Screens ---
         function renderStrengthsGrid() {
             const grid = document.getElementById('strengths-grid');
+            if(!grid) return;
             grid.innerHTML = '';
             
             allStrengths.forEach(s => {
@@ -509,7 +517,7 @@
             showView('view-dashboard');
         }
 
-        // --- 6. Dashboard ---
+        // --- 6. Dashboard & Activities ---
         function renderDashboard() {
             const container = document.getElementById('dashboard-cards');
             container.innerHTML = '';
@@ -538,16 +546,17 @@
             });
         }
 
-        // --- 7. Dynamic Activity Loader & Logic ---
         function hideInsight() {
             const box = document.getElementById('act-insight-box');
-            box.classList.add('hidden');
+            if(box) box.classList.add('hidden');
         }
 
         function showInsight(text) {
             const box = document.getElementById('act-insight-box');
-            document.getElementById('act-insight-text').textContent = text;
-            box.classList.remove('hidden');
+            if(box) {
+                document.getElementById('act-insight-text').textContent = text;
+                box.classList.remove('hidden');
+            }
         }
 
         window.loadActivity = function(actId) {
@@ -565,7 +574,6 @@
                 label = "01 / STRENGTH IN ACTION (BRIGHT SIDE)";
                 textValue = appState.answers.act1_text;
                 
-                // Content Generation
                 contentDiv.innerHTML = `
                     <div class="grid md:grid-cols-2 gap-4 mb-6">
                         <div class="p-4 bg-[#2F3E46] rounded-lg border-l-4 domain-${s1Obj.domain}">
@@ -583,7 +591,6 @@
                         <div class="space-y-3" id="options-container"></div>
                     </div>
                 `;
-                
                 setTimeout(() => renderInteractiveOptions(a1Scenarios, 'act1_choice'), 10);
             }
             
@@ -674,7 +681,6 @@
             showView('activity-container');
         }
 
-        // Render generic multiple choices and handle insights
         function renderInteractiveOptions(optionsArray, stateKey, containerId = 'options-container', specificInsightId = null) {
             const container = document.getElementById(containerId);
             if(!container) return;
@@ -705,12 +711,13 @@
                 container.appendChild(btn);
             });
 
-            // Show insight on load if already selected
             if(selectedIdx !== null && selectedIdx !== undefined) {
                 if(specificInsightId) {
                     const insightEl = document.getElementById(specificInsightId);
-                    insightEl.innerHTML = `<strong class="text-brand-gold">Coach's Insight:</strong> ${optionsArray[selectedIdx].insight}`;
-                    insightEl.classList.remove('hidden');
+                    if(insightEl) {
+                        insightEl.innerHTML = `<strong class="text-brand-gold">Coach's Insight:</strong> ${optionsArray[selectedIdx].insight}`;
+                        insightEl.classList.remove('hidden');
+                    }
                 } else {
                     showInsight(optionsArray[selectedIdx].insight);
                 }
@@ -723,16 +730,18 @@
             
             a4Tabs.forEach(t => {
                 const btn = document.getElementById(`tab-${t.id}`);
-                if(t.id === tabId) {
-                    btn.className = "flex-1 py-3 text-sm font-bold transition-colors bg-brand-gold text-brand-bg";
-                } else {
-                    btn.className = "flex-1 py-3 text-sm font-bold transition-colors bg-[#3A4B55] text-gray-300 hover:bg-gray-600";
+                if(btn) {
+                    if(t.id === tabId) {
+                        btn.className = "flex-1 py-3 text-sm font-bold transition-colors bg-brand-gold text-brand-bg";
+                    } else {
+                        btn.className = "flex-1 py-3 text-sm font-bold transition-colors bg-[#3A4B55] text-gray-300 hover:bg-gray-600";
+                    }
                 }
             });
 
             document.getElementById('e-scenario-title').textContent = `${tabData.label} Scenario:`;
             document.getElementById('e-scenario-desc').textContent = tabData.scenario;
-            hideInsight(); // Reset insight on tab switch
+            hideInsight();
             renderInteractiveOptions(tabData.options, 'act4_choice');
         }
 
@@ -756,28 +765,24 @@
             showView('view-dashboard');
         }
 
-        // --- 8. Final Report Generation ---
+        // --- 7. Final Report ---
         window.openSummary = function() {
             const ans = appState.answers;
             const s1Obj = allStrengths.find(s => s.name === appState.selectedPair[0]);
             const s2Obj = allStrengths.find(s => s.name === appState.selectedPair[1]);
 
-            // Helper to format
             const f = (val, textFallback) => {
                 let res = val || '';
                 if(textFallback) res += (res ? '<br><br><span class="text-brand-gold font-semibold">My Note:</span> ' : '') + `<em>"${textFallback}"</em>`;
                 return res || '<span class="text-gray-500 italic">No reflection recorded.</span>';
             }
 
-            // S
             let a1Str = ans.act1_choice !== null ? a1Scenarios[ans.act1_choice].text : null;
             document.getElementById('sum-s').innerHTML = f(a1Str, ans.act1_text);
 
-            // T
             let a2Str = ans.act2_choice !== null ? a2Scenarios[ans.act2_choice].text : null;
             document.getElementById('sum-t').innerHTML = f(a2Str, ans.act2_text);
 
-            // P
             const p1 = ans.act3_l1_choice !== null ? domainPerspectives[s1Obj.domain].choices[ans.act3_l1_choice].text : 'Not selected.';
             const p2 = ans.act3_l2_choice !== null ? domainPerspectives[s2Obj.domain].choices[ans.act3_l2_choice].text : 'Not selected.';
             const p3 = ans.act3_l3_choice !== null ? integrationPerspectives.choices[ans.act3_l3_choice].text : 'Not selected.';
@@ -788,7 +793,6 @@
                 <div class="bg-brand-bg p-4 rounded border border-gray-600 mt-2"><strong class="text-white block mb-1">Personal Integration Note</strong><span class="text-sm">${ans.act3_text ? `<em>"${ans.act3_text}"</em>` : '-'}</span></div>
             `;
 
-            // E
             const eTab = a4Tabs.find(t => t.id === ans.act4_tab);
             const eStr = ans.act4_choice !== null ? eTab.options[ans.act4_choice].text : null;
             document.getElementById('sum-e').innerHTML = `
@@ -802,21 +806,21 @@
             showView('view-summary');
         }
 
-        // --- 9. Theming and Language Logic ---
+        // --- 8. Theme & Translation ---
         let isLightMode = false;
         window.toggleTheme = function() {
             isLightMode = !isLightMode;
-            if (isLightMode) {
-                document.documentElement.classList.add('light-mode');
-            } else {
-                document.documentElement.classList.remove('light-mode');
-            }
+            if (isLightMode) document.documentElement.classList.add('light-mode');
+            else document.documentElement.classList.remove('light-mode');
         }
 
         const i18n = {
             en: {
                 title: 'STRENGTH <span class="text-brand-gold">×</span> STRENGTH',
                 what_is_step: 'What is STEP?',
+                splash_welcome: 'Welcome to the Experience',
+                splash_desc: 'A guided framework to explore the unique dynamics, tensions, and synergies of your top strengths.',
+                enter_platform: 'Enter Platform',
                 discover: 'Discover Your Dynamic',
                 discover_desc: 'Select your Top 5 strengths to begin. Notice how they are grouped by their natural domains.',
                 dom_exec: 'Executing', dom_inf: 'Influencing', dom_rel: 'Relationship Building', dom_str: 'Strategic Thinking',
@@ -831,11 +835,20 @@
                 change_pair: 'Change Pair',
                 gen_report: 'Generate Insight Report',
                 reflection: 'Personal Reflection (Optional)',
-                save_return: 'Save & Return to Dashboard'
+                save_return: 'Save & Return to Dashboard',
+                report_title: 'Your Dynamic Report',
+                sum_s_title: 'Bright Side',
+                sum_t_title: 'Tension Points',
+                sum_p_title: 'Perspectives',
+                sum_e_title: 'Action Experience',
+                ret_dash: 'Return to Dashboard'
             },
             ar: {
                 title: 'القوة <span class="text-brand-gold">×</span> القوة',
                 what_is_step: 'ما هو STEP؟',
+                splash_welcome: 'مرحباً بك في التجربة',
+                splash_desc: 'إطار عمل موجه لاستكشاف الديناميكيات والتوترات والتآزر الفريد لأهم نقاط قوتك.',
+                enter_platform: 'الدخول للمنصة',
                 discover: 'اكتشف ديناميكيتك',
                 discover_desc: 'اختر أهم 5 نقاط قوة للبدء. لاحظ كيف يتم تجميعهم حسب مجالاتهم الطبيعية.',
                 dom_exec: 'المنفذة', dom_inf: 'المؤثرة', dom_rel: 'بناء العلاقات', dom_str: 'التفكير الاستراتيجي',
@@ -850,7 +863,13 @@
                 change_pair: 'تغيير الزوج',
                 gen_report: 'إنشاء تقرير الرؤى',
                 reflection: 'تأمل شخصي (اختياري)',
-                save_return: 'حفظ والعودة إلى لوحة المعلومات'
+                save_return: 'حفظ والعودة إلى لوحة المعلومات',
+                report_title: 'تقرير الديناميكية الخاص بك',
+                sum_s_title: 'الجانب المشرق',
+                sum_t_title: 'نقاط التوتر',
+                sum_p_title: 'وجهات النظر',
+                sum_e_title: 'تجربة العمل',
+                ret_dash: 'العودة إلى لوحة المعلومات'
             }
         };
 
@@ -870,7 +889,6 @@
                 btn.textContent = 'عربي';
             }
 
-            // Apply translations dynamically to UI elements
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if(i18n[lang][key]) {
@@ -878,14 +896,12 @@
                 }
             });
             
-            // Handle placeholders
             const placeholderEl = document.getElementById('act-text-input');
             if (placeholderEl) {
                 placeholderEl.placeholder = isArabic ? 'قم بتدوين أفكارك، أو مثال محدد على حدوث ذلك...' : 'Jot down your thoughts, or a specific example of this happening...';
             }
         }
 
-        // Boot
         window.onload = init;
     </script>
 </body>
